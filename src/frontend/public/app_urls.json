@@ -1,0 +1,4 @@
+{
+    "VIDEO_SERVER_URL": "http://163.117.140.39:30005",
+    "BACKEND_URL": "http://localhost:8081"
+}

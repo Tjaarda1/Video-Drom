@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vue-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vue-app
+  template:
+    metadata:
+      labels:
+        app: vue-app
+    spec:
+      volumes:
+        - name: config-volume
+          configMap:
+            name: app-urls-configmap
+      containers:
+        - name: vue-app
+          image: alexdecb/vue-app:latest 
+          ports:
+            - containerPort: 80  
+          volumeMounts:
+            - name: config-volume
+              mountPath: /usr/share/nginx/html/app_urls.json
+              subPath: app_urls.json

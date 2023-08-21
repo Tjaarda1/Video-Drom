@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-urls-configmap
+data:
+  app_urls.json: |
+    {
+    "VIDEO_SERVER_URL": "http://163.117.140.39:30005",
+    "BACKEND_URL": "http://163.117.140.39:30002"
+    } 

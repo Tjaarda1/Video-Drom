@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: vod-back
+spec:
+  selector:
+    matchLabels:
+      app: spring-app
+  serviceName: spring-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: spring-app
+    spec:
+      containers:
+      - name: spring-app
+        image: alexdecb/build-and-deploy:2
+        # command: ["java"]
+        # args: ["-jar", "/opt/app/video-on-demand.jar","--trace"]
+        env:
+        - name: DB_URL
+          value: "10.152.183.88"
+
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_NAME
+          value: movies 
+        - name: DB_USER
+          value: root 
+        - name: BACK_PORT
+          value: "8081" 
+        - name: BACK_URL
+          value: localhost
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mariadb-secret
+              key: mariadb-root-password
+  
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-service
+spec:
+  selector:
+    app: spring-app
+  ports:
+  - name: http
+    port: 8081
+    targetPort: 8081
+  type: LoadBalancer
