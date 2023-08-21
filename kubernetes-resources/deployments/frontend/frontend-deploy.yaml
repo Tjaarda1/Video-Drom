@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: vue-app
+  name: frontend-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: vue-app
+      app: frontend-app
   template:
     metadata:
       labels:
-        app: vue-app
+        app: frontend-app
     spec:
       volumes:
         - name: config-volume
           configMap:
             name: app-urls-configmap
       containers:
-        - name: vue-app
-          image: alexdecb/vue-app:latest 
+        - name: frontend-app
+          image: alexdecb/video-drom-front:latest 
           ports:
             - containerPort: 80  
           volumeMounts:

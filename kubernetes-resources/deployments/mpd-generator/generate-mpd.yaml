@@ -1,13 +1,13 @@
 apiVersion: batch/v1
-kind: Job
+kind: Deployment
 metadata:
-  name: generate-mpds
+  name: mpd-generator
 spec:
   template:
     spec:
       containers:
-      - name: generate-mpds
-        image: alexdecb/generate_mpds:3
+      - name: mpd-generator
+        image: alexdecb/mpd-generator:latest
         imagePullPolicy: Always
         volumeMounts:
         - name: video-files-volume

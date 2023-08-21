@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: nginx-statefulset
+  name: video-server-sts
 spec:
   selector:
     matchLabels:
-      app: nginx
+      app: video-server
   replicas: 1
   template:
     metadata:
       labels:
-        app: nginx
+        app: video-server
     spec:
       containers:
-        - name: nginx-container
+        - name: video-server
           image: nginx
           ports:
             - containerPort: 80
@@ -26,7 +26,7 @@ spec:
       volumes:
         - name: nginx-conf
           configMap:
-            name: nginx-conf-configmap
+            name: video-server-cm
         - name: video-files
           persistentVolumeClaim:
             claimName: video-files
@@ -34,10 +34,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service
+  name: video-server-service
 spec:
   selector:
-    app: nginx-app
+    app: video-server
   ports:
   - name: http
     port: 80

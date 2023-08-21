@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: vod-back
+  name: backend-app
 spec:
   selector:
     matchLabels:
-      app: spring-app
-  serviceName: spring-app
+      app: backend-app
+  serviceName: backend-app
   replicas: 1
   template:
     metadata:
       labels:
-        app: spring-app
+        app: backend-app
     spec:
       containers:
-      - name: spring-app
-        image: alexdecb/build-and-deploy:2
+      - name: backend-app
+        image: alexdecb/video-drom-back:latest
         # command: ["java"]
         # args: ["-jar", "/opt/app/video-on-demand.jar","--trace"]
         env:
