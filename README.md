@@ -1,15 +1,41 @@
 
-# Video-Drom Application README
+# Video-Drom Application
 
 Welcome to the README for the Video-Drom application. This document provides comprehensive instructions on how to compile Docker images, upload them, deploy Kubernetes resources, and an in-depth understanding of the application's design and purpose.
 
 ## Table of Contents
 
-- [Docker Images](#docker-images)
-- [Kubernetes Resources](#kubernetes-resources)
-- [Design of the Application](#design-of-the-application)
 - [What is Video-Drom?](#what-is-video-drom)
 - [Summary of Features](#summary-of-features)
+- [Design of the Application](#design-of-the-application)
+- [Docker Images](#docker-images)
+- [Kubernetes Resources](#kubernetes-resources)
+
+
+## What is Video-Drom?
+
+Video-Drom is an application developed for a thesis project, offering users a platform to store and access their personal videos through web interfaces. The app employs Dynamic Adaptive Streaming over HTTP (DASH) technology for on-demand video delivery and utilizes Kubernetes for deployment. A deeper study of the app is done in the respective memoir.
+
+
+## Summary of Features
+
+- Upload and store personal videos.
+- Access videos from any web-enabled device.
+- Leverage DASH technology for adaptive video streaming.
+- Microservices architecture on Kubernetes.
+- Components: Frontend, Backend, Video-Server, MPD Generator, and Database.
+
+For detailed instructions and a comprehensive understanding of the application's architecture, refer to the respective sections above.
+
+## Design of the Application
+
+Video-Drom is an application designed for users to store and access personal videos via the web, utilizing cutting-edge video streaming technologies. The microservices architecture includes Frontend, Backend, Video-Server, MPD Generator, and Database. Communication patterns, security, and the use of an API Gateway are outlined in detail.
+
+### Application Flow
+
+Viewing Content: Diagram illustrating how users access and view content.
+
+Uploading Content: Diagram depicting the process of uploading videos.
 
 ## Docker Images
 
@@ -87,29 +113,8 @@ Setup volumes, NFS server, and deploy services:
    ```bash
    kubectl create -f ./kubernetes-resources/deployments/
 
-## Design of the Application
-
-Video-Drom is an application designed for users to store and access personal videos via the web, utilizing cutting-edge video streaming technologies. The microservices architecture includes Frontend, Backend, Video-Server, MPD Generator, and Database. Communication patterns, security, and the use of an API Gateway are outlined in detail.
-
-### Application Flow
-
-Viewing Content: Diagram illustrating how users access and view content.
-
-Uploading Content: Diagram depicting the process of uploading videos.
-
-## What is Video-Drom?
-
-Video-Drom is an application developed for a thesis project, offering users a platform to store and access their personal videos through web interfaces. The app employs Dynamic Adaptive Streaming over HTTP (DASH) technology for on-demand video delivery and utilizes Kubernetes for deployment. A deeper study of the app is done in the respective memoir.
 
 
-## Summary of Features
 
-- Upload and store personal videos.
-- Access videos from any web-enabled device.
-- Leverage DASH technology for adaptive video streaming.
-- Microservices architecture on Kubernetes.
-- Components: Frontend, Backend, Video-Server, MPD Generator, and Database.
-
-For detailed instructions and a comprehensive understanding of the application's architecture, refer to the respective sections above.
 
 For inquiries or assistance, feel free to contact me!
