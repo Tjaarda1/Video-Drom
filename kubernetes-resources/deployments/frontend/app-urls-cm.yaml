@@ -5,6 +5,6 @@ metadata:
 data:
   app_urls.json: |
     {
-    "VIDEO_SERVER_URL": "http://163.117.140.39:30005",
-    "BACKEND_URL": "http://163.117.140.39:30002"
+    "VIDEO_SERVER_URL": "http://10.0.2.5:30005",
+    "BACKEND_URL": "http://10.0.2.5:30002"
     } 

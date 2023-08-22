@@ -1,19 +1,27 @@
-apiVersion: batch/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mpd-generator
 spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mpd-generator
   template:
+    metadata:
+      labels:
+        app: mpd-generator
     spec:
       containers:
       - name: mpd-generator
         image: alexdecb/mpd-generator:latest
         imagePullPolicy: Always
         volumeMounts:
-        - name: video-files-volume
-          mountPath: /tmp/workdir/dash_videos
-      restartPolicy: Never
+        - name: nfs-volume
+          mountPath: /usr/src/app/dash_videos
       volumes:
-      - name: video-files-volume
-        persistentVolumeClaim:
-          claimName: video-files
+      - name: nfs-volume
+        nfs: 
+          # URL for the NFS server
+          server: 10.152.183.39
+          path: /

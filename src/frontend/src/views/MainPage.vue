@@ -7,7 +7,7 @@
                     <p >{{ movie.description }}</p>
                     
                 </b-card-text>
-                <!-- <b-button  variant="primary" @Click="watchMovie(movie.title)">Watch this movie</b-button> -->
+                <!-- <b-button  variant="primary" @Click="watchMovie(movie.uniqueKey)">Watch this movie</b-button> -->
             </b-card>
         </div>
     </div>
@@ -61,9 +61,9 @@ export default {
                 },
         )
         },
-        watchMovie(title){
-            console.log(title)
-            this.$router.push({path: '/watchMovie', query:{movieManifest: title} });
+        watchMovie(uniqueKey){
+            console.log(uniqueKey)
+            this.$router.push({path: '/watchMovie', query:{movieManifest: uniqueKey} });
         },
         injectImageSourceUrl(){
             // var imagePaths = this.movies.map(movie => movie.imagePath + 'lo');

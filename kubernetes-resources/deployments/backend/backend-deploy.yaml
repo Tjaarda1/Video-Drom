@@ -1,12 +1,11 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: backend-app
 spec:
   selector:
     matchLabels:
       app: backend-app
-  serviceName: backend-app
   replicas: 1
   template:
     metadata:
@@ -20,8 +19,7 @@ spec:
         # args: ["-jar", "/opt/app/video-on-demand.jar","--trace"]
         env:
         - name: DB_URL
-          value: "10.152.183.88"
-
+          value: "10.152.183.83"
         - name: DB_PORT
           value: "3306"
         - name: DB_NAME
@@ -32,6 +30,10 @@ spec:
           value: "8081" 
         - name: BACK_URL
           value: localhost
+        - name: GO_URL
+          value: "10.152.183.162"
+        - name: GO_PORT
+          value: "80"
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:

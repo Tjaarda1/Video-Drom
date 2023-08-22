@@ -1,7 +1,7 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
-  name: video-server-sts
+  name: video-server-deploy
 spec:
   selector:
     matchLabels:
@@ -21,25 +21,14 @@ spec:
             - name: nginx-conf
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
-            - name: video-files
+            - name: nfs-volume
               mountPath: /video_server/
       volumes:
         - name: nginx-conf
           configMap:
             name: video-server-cm
-        - name: video-files
-          persistentVolumeClaim:
-            claimName: video-files
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: video-server-service
-spec:
-  selector:
-    app: video-server
-  ports:
-  - name: http
-    port: 80
-    targetPort: 80
-  type: LoadBalancer
+        - name: nfs-volume
+          nfs: 
+            # URL for the NFS server
+            server: 10.152.183.39
+            path: /

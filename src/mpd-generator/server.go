@@ -100,7 +100,7 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Print("all good")
 
-	cmd, err := exec.Command("./generate_mpd.sh", videoHeader.Filename).Output()
+	cmd, err := exec.Command("bash", "generate_mpd.sh", videoHeader.Filename).Output()
 	if err != nil {
 		fmt.Printf("error %s", err)
 	}

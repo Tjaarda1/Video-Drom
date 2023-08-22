@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: nginx-conf-configmap
+  name: video-server-cm
 data:
   nginx.conf: |
     events {}
