@@ -27,21 +27,38 @@ spec:
 
 ---
 
-# Run the NFS server image in a pod that is
-# exposed by the service.
-
-kind: Pod
-apiVersion: v1
+apiVersion: apps/v1
+kind: StatefulSet
 metadata:
-  name: nfs-server-pod
-  labels:
-    role: nfs
+  name: nfs-server-sts
 spec:
-  containers:
-    - name: nfs-server-container
-      image: cpuguy83/nfs-server
-      securityContext:
-        privileged: true
-      args:
-        # Pass the paths to share to the Docker image
-        - /exports
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nfs-server
+  serviceName: nfs-server
+  template:
+    metadata:
+      labels:
+        app: nfs-server
+        role: nfs
+    spec:
+      containers:
+        - name: nfs-server-container
+          image: cpuguy83/nfs-server
+          securityContext:
+            privileged: true
+          args:
+            - /exports
+          volumeMounts:
+            - name: datadir
+              mountPath: /exports
+  volumeClaimTemplates:
+  - metadata:
+      name: datadir
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: manual
+      resources:
+        requests:
+          storage: 5Gi
