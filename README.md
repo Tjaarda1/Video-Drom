@@ -77,7 +77,7 @@ Setup volumes, NFS server, and deploy services:
 
 1. Set up NFS server:
    ```bash
-   kubectl create -f ./kubernetes-resources/volumes/video-files/nfs-server.yaml
+   kubectl create -f ./kubernetes-resources/volumes/video-files/
    ```
 
 2. Create MariaDB volume:
