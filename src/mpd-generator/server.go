@@ -22,7 +22,7 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err := r.ParseMultipartForm(10 << 20) // 10 MB limit
+	err := r.ParseMultipartForm(32 << 20) // 32 MB limit
 	if err != nil {
 		fmt.Println(err)
 

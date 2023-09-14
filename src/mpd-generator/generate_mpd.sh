@@ -7,7 +7,7 @@ movie=$1
 declare -A availableConfs
 availableConfs[480x270]=128k
 availableConfs[640x360]=500k
-availableConfs[960x540]=1M
+availableConfs[480x270]=1M
 availableConfs[1280x720]=3M
 cd dash_videos;
 
