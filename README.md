@@ -77,7 +77,7 @@ Setup volumes, NFS server, and deploy services:
 
 1. Set up NFS server:
    ```bash
-   kubectl create -f ./kubernetes-resources/volumes/video-files/nfs-server.yaml
+   kubectl create -f ./kubernetes-resources/volumes/video-files/
    ```
 
 2. Create MariaDB volume:
@@ -93,22 +93,23 @@ Setup volumes, NFS server, and deploy services:
    ```
 
 2. Deploy MPD-Generator:
+   - Configure `./kubernetes-resources/deployments/mpd-generator/` with the NFS URL.
    ```bash
    kubectl create -f ./kubernetes-resources/deployments/mpd-generator/
    ```
 
-3. Deploy Backend:
+4. Deploy Backend:
    - Configure `./kubernetes-resources/deployments/backend/backend-deploy.yaml` with DB_URL.
    ```bash
    kubectl create -f ./kubernetes-resources/deployments/backend
    ```
 
-4. Deploy Video-Server:
+5. Deploy Video-Server:
    ```bash
    kubectl create -f ./kubernetes-resources/deployments/video-server
    ```
 
-5. Deploy Frontend:
+6. Deploy Frontend:
    - Modify `app-urls-cm.yaml` with video-server and backend URLs.
    ```bash
    kubectl create -f ./kubernetes-resources/deployments/
