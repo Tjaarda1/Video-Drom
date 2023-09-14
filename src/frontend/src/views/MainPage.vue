@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row" style="padding-top:2em">
         <div  class="col-sm" v-for="(movie,index) in movies">
-            <b-card  :title=movie.title :img-src=movieImage(movie) img-alt="Image" img-top tag="article" style="width: 20em; cursor: pointer" class="mb-2 " @Click="watchMovie(movie.title)" >
+            <b-card  :title=movie.title :img-src=movieImage(movie) img-alt="Image" img-top tag="article" style="width: 20em; cursor: pointer" class="mb-2 " @Click="watchMovie(movie.uniqueKey)" >
                 <b-card-text class="truncate" >
                     <p >{{ movie.description }}</p>
                     
